@@ -1,0 +1,40 @@
+Flow: "newUser"
+state:"startState"
+	-"service.showThemAll()"
+	:on "outcome" to "outcomeState" 
+	:on "exit" to "endState"
+
+state:"outcomeState"
+	-"service.addToSet(user)" 
+	-"service.showThemAll()"
+	:on "cancel"
+
+
+
+
+
+
+Flow: "booki"
+state:"startState" view="bookingDetails" secured: "Gfdg"
+	-"userDao.persist(user)" result="rezultat"   
+	:on "outcome" to "outcomeState" 
+	:on "exit" to "endState"
+
+state:"outcomeState"
+	-"gfsdgfdg.hg()" result="rezultat" 
+	-"gfsdgfdg.hg(gdfgd)" result="rezultat" 
+	:on "confirm" decision:
+		-"userDao.czyCosTam()" result="rezultat"
+		:if "rezultat"=="true" to "gfd"
+		:if "rezultat"=="true"
+		:else to "gdf"
+	:on "cancel"
+
+state:"endState" view="confirmation"
+	-"bookingDao.persist(booking)" 
+	:on "exit"
+	:on "gh" to "GDFG"
+
+state:"endState" view="confirmation"
+	:on "exit"
+	:on "gfdh"

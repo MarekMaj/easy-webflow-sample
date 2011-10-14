@@ -1,0 +1,13 @@
+EASY-WEBFLOW Sample Application
+
+This is sample web application that leverage Easy-Webflow framework.
+
+It is recommended to define Your project dependencies similarly to the way it is done in this sample app. Please read build.gradle file.
+This simple application also shows how to define flow properly, although it does not show all the possibilities that easy-webflow can be leverage. For further information on defining flows, states, transitions or commands please visit easy-webflow framework on github page https://github.com/MarekMaj/easy-webflow and read README file.
+
+The example configuration can be found in "/src/main/webapp/WEB-INF/flow" directory.
+
+To deploy sample application follow instructions: 
+1. Ensure that framework-[version].jar artifact is present in your local maven repo (instructions on easy-webflow project website)
+2. From main directory run 'gradle build' command
+3. War artifact will be created (in '/build/libs' directory) and ready for deployment on your application server
