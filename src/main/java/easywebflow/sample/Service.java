@@ -35,5 +35,7 @@ public class Service implements Serializable {
 		}
 	}
 	
-	public void getD(){}
+	public int countUsers(){
+		return set.size();
+	}
 }

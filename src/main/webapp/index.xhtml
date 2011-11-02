@@ -1,29 +1,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" 
 xmlns:h="http://java.sun.com/jsf/html" 
-xmlns:f="http://java.sum.com/jsf/core" 
+xmlns:f="http://java.sun.com/jsf/core" 
 xmlns:ui="http://java.sun.com/jsf/facelets">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
       <title>
-         <h:outputText value="COs tam cos tam"/> 
+         <h:outputText value="Hello View"/> 
       </title> 
    </head>
    <body>
-   		<h:outputText value="hello Marek!"/>
+   		<h:outputText value="hello! This sample app registers new users using Easy Webflow"/>
+
    		<h:form>
-   			<h:commandLink value="odpal to ..." action="#{statefullFlow.getDeclaredMethods}"/>
+   			<h:commandLink value="Show All users ..." action="#{service.showThemAll}"/>
    		</h:form>
    		<h:form>
-   			<h:commandLink value="odpal to ..." action="#{nazwa2.getDeclaredMethods}"/>
-   		</h:form>
-   		<h:form>
-   			<h:commandLink value="odpal to ..." action="#{nazwa.getDeclaredMethods}"/>
-   		</h:form>
-   		<h:form>
-   			<h:commandLink value="All users ..." action="#{service.showThemAll}"/>
-   		</h:form>
-   		<h:form>
-   			<h:commandLink value="odpal nazwa.field.getD" action="#{newUser.start}"/>
+   			<h:commandLink value="Start new user conversation" action="#{newUser.start}"/>
    		</h:form>
    </body> 
 </html>

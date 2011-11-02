@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flows xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <flow name="newUser">
+    <state name="startState" >
+		<start> 
+			<beanName>service</beanName>
+			<methodName>showThemAll</methodName>
+		</start>
+		<transition> 
+			<on>outcome</on>
+			<decision>
+				<invoke>
+					<beanName>service</beanName>
+					<methodName>countUsers</methodName>
+					<resultName>countUsers</resultName>
+				</invoke>
+				<if>
+					<object>countUsers</object>
+					<compareTo>5</compareTo>
+					<transitionTo>null</transitionTo>
+				</if>
+				<elseTo>outcomeState</elseTo>
+			</decision>
+			<invoke>
+				<beanName>service</beanName>
+				<methodName>showThemAll</methodName>
+			</invoke>
+		</transition>
+		<transition>
+			<on>exit</on>
+			<to>endState</to>
+		</transition>
+    </state>
+   
+   <state name="outcomeState" >
+   		<start>
+			<beanName>service</beanName>
+			<methodName>addToSet</methodName>
+			<param>
+				<beanName>user</beanName>
+			</param>
+		</start>
+		<start>
+			<beanName>service</beanName>
+			<methodName>showThemAll</methodName>
+		</start>
+		<transition>
+			<on>cancel</on>
+		</transition>
+		
+    </state>
+  </flow>
+</flows>
