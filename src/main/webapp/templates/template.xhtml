@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:view contentType="text/html">
+<h:head>
+<title>Sklep internetowy</title>
+<h:outputStylesheet library="css" name="application.css"/>	
+</h:head>
+<h:body>
+    <div id="page">
+        <div id="header">
+            <a href="#" class="logo"><img src="#{facesContext.externalContext.requestContextPath}/images/logo.png" alt="RF logo"/></a>
+            <div class="right-controls">
+                <ui:include src="/templates/top_menu.xhtml" />
+            </div>
+        </div>
+        <div id="page-content">
+            <div class="left-menu">
+				<ui:include src="/templates/left_panel.xhtml" />
+            </div>
+            <div class="content-container">
+				<ui:insert name="body">
+				     	Body content missed
+				</ui:insert>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</h:body> 
+</f:view>
+</html>

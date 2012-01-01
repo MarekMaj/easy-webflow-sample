@@ -4,13 +4,16 @@ apply plugin: 'war'
 
 sourceCompatibility = 1.6
 group = 'org.easy-webflow'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.4-SNAPSHOT'
 
 def localMavenRepo = new File('/home/marc/.m2/repository').toURL().toString()
+
+defaultTasks "build"
 
 repositories {
 	mavenRepo urls: localMavenRepo
 	mavenCentral()
+	mavenRepo urls: 'http://repository.jboss.org/nexus/content/groups/public-jboss/'
 }
 
 /*jaki scope dependency powinienem ustawic ?? compile czy nowy provided ?? */
@@ -19,7 +22,10 @@ configurations {
 }
 
 dependencies {
-	compile 'javax.enterprise:cdi-api:1.0-SP4'
-	runtime 'com.sun.faces:jsf-api:2.1.2' , 'javax.enterprise:cdi-api:1.0-SP4', 'org.easy-webflow:framework:0.0.1-SNAPSHOT'
+	compile 'org.easy-webflow:framework:0.9.0-SNAPSHOT', 'javax.enterprise:cdi-api:1.0-SP4', 
+	'org.richfaces.ui:richfaces-components-ui:4.1.0.Final', 'org.richfaces.core:richfaces-core-impl:4.1.0.Final',
+	'org.hibernate:hibernate-core:3.6.8.Final', 'org.hibernate:hibernate-validator:4.2.0.Final',
+	'mysql:mysql-connector-java:5.1.18'
+	runtime 'com.sun.faces:jsf-api:2.1.3' 
 }
 

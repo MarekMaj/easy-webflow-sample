@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table-filter match-name="CATEGORIES"></table-filter>
+	<table-filter match-name="CATEGORY_FEATURES"></table-filter>
+	<table-filter match-name="FEATURES"></table-filter>
+	<table-filter match-name="FEATURE_VALUES"></table-filter>
+	<table-filter match-name="ORDERS"></table-filter>
+	<table-filter match-name="ORDER_ITEMS"></table-filter>
+	<table-filter match-name="PRODUCTS"></table-filter>
+	<table-filter match-name="USERS"></table-filter>
+	<table catalog="INZ_SKLEP" name="CATEGORIES"
+		class="easywebflow.sample.model.Category">
+	</table>
+	<table catalog="INZ_SKLEP" name="FEATURES"
+		class="easywebflow.sample.model.Feature">
+	</table>
+	<table catalog="INZ_SKLEP" name="CATEGORY_FEATURES"
+		class="easywebflow.sample.model.CategoryFeature">
+	</table>
+	<table catalog="INZ_SKLEP" name="PRODUCTS"
+		class="easywebflow.sample.model.Product">
+	</table>
+	<table catalog="INZ_SKLEP" name="FEATURE_VALUES"
+		class="easywebflow.sample.model.FeatureValue">
+	</table>
+	<table catalog="INZ_SKLEP" name="ORDERS" class="easywebflow.sample.model.Order">
+	</table>
+	<table catalog="INZ_SKLEP" name="ORDER_ITEMS"
+		class="easywebflow.sample.model.OrderItem">
+	</table>
+	<table catalog="INZ_SKLEP" name="USERS" class="easywebflow.sample.model.User">
+	</table>
+</hibernate-reverse-engineering>
