@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="body">
+		<fieldset class="example-cnt">
+			<h:panelGroup>
+				<h:form>
+				<rich:graphValidator value="#{rejestracja.map.user}" id="userValidator">
+					<h:panelGrid columns="3">
+						<h:outputLabel>Twój login: </h:outputLabel>
+						<h:inputText id="login" required="true"
+							value="#{rejestracja.map.user.login}" />
+						<rich:message for="login" />
+
+						<h:outputLabel>Twoje hasło: </h:outputLabel>
+						<h:inputSecret id="password" required="true"
+							value="#{rejestracja.map.user.password}">
+							<f:validateLength minimum="6" maximum="12" />
+							<f:validateRequired />
+							<rich:validator />
+						</h:inputSecret>
+						<rich:message for="password" />
+
+						<h:outputLabel>Potwierdź hasło: </h:outputLabel>
+						<h:inputSecret id="password2" required="true"
+							value="#{rejestracja.map.user.password2}" />
+						<rich:message for="password2" />
+
+						<h:commandButton value="Dalej" render="userValidator"
+							action="#{rejestracja.transitionTo('zatwierdzLogin')}" />
+						<rich:message for="userValidator"/>
+						
+					</h:panelGrid>
+					</rich:graphValidator>
+				</h:form>
+			</h:panelGroup>
+		</fieldset>
+	</ui:define>
+</ui:composition>
+</html>

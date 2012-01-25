@@ -1,0 +1,30 @@
+<scxml initial="wprowadzLogin" name="rejestracja"><!--   node-size-and-position x=0.0 y=0.0 w=1074.0 h=696.0  -->
+ <datamodel>
+  <data>user</data>
+ </datamodel>
+ <state id="wprowadzLogin"><!--   node-size-and-position x=50.0 y=30.0 w=100.0 h=100.0  -->
+  <datamodel>
+   <viewId>/flows/rejestracja/wprowadzLogin</viewId>
+  </datamodel>
+  <onexit>
+   <invoke bean="userService" method="uniqueLogin" result="uniqueLogin">
+    <param bean="user"></param>
+   </invoke>
+  </onexit>
+  <transition cond="uniqueLogin==true" event="zatwierdzLogin" target="wprowadzDane"></transition>
+ </state>
+ <state id="wprowadzDane"><!--   node-size-and-position x=280.0 y=120.0 w=100.0 h=80.0  -->
+  <transition event="zatwierdzDane" target="regulamin"></transition>
+ </state>
+ <final id="odrzucony"><!--   node-size-and-position x=350.0 y=460.0 w=100.0 h=90.0  --></final>
+ <state id="regulamin"><!--   node-size-and-position x=280.0 y=300.0 w=100.0 h=70.0  -->
+  <onexit>
+   <invoke bean="userService" method="registerNewUser" result="userCreated">
+    <param bean="user"/>
+   </invoke>
+  </onexit>
+  <transition cond="userCreated=true" event="potwierdz" target="utworzony"></transition>
+  <transition cond="userCreated==false" event="potwierdz" target="odrzucony"></transition>
+ </state>
+ <final id="utworzony"><!--   node-size-and-position x=130.0 y=460.0 w=100.0 h=90.0  --></final>
+</scxml>

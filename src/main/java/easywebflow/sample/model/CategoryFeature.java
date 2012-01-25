@@ -1,5 +1,5 @@
 package easywebflow.sample.model;
-// Generated 2012-01-01 22:49:53 by Hibernate Tools 3.4.0.CR1
+// Generated 2012-01-13 09:00:41 by Hibernate Tools 3.4.0.CR1
 
 
 import java.util.HashSet;
@@ -28,7 +28,6 @@ public class CategoryFeature  implements java.io.Serializable {
      private CategoryFeatureId id;
      private Feature feature;
      private Category category;
-     private String ui;
      private Set<FeatureValue> featureValues = new HashSet<FeatureValue>(0);
 
     public CategoryFeature() {
@@ -40,11 +39,10 @@ public class CategoryFeature  implements java.io.Serializable {
         this.feature = feature;
         this.category = category;
     }
-    public CategoryFeature(CategoryFeatureId id, Feature feature, Category category, String ui, Set<FeatureValue> featureValues) {
+    public CategoryFeature(CategoryFeatureId id, Feature feature, Category category, Set<FeatureValue> featureValues) {
        this.id = id;
        this.feature = feature;
        this.category = category;
-       this.ui = ui;
        this.featureValues = featureValues;
     }
    
@@ -53,7 +51,7 @@ public class CategoryFeature  implements java.io.Serializable {
     
     @AttributeOverrides( {
         @AttributeOverride(name="catIdCategory", column=@Column(name="CAT_idCategory", nullable=false) ), 
-        @AttributeOverride(name="featIdCategoryFeature", column=@Column(name="FEAT_idCategoryFeature", nullable=false) ) } )
+        @AttributeOverride(name="featIdFeature", column=@Column(name="FEAT_idFeature", nullable=false) ) } )
     public CategoryFeatureId getId() {
         return this.id;
     }
@@ -63,7 +61,7 @@ public class CategoryFeature  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="FEAT_idCategoryFeature", nullable=false, insertable=false, updatable=false)
+    @JoinColumn(name="FEAT_idFeature", nullable=false, insertable=false, updatable=false)
     public Feature getFeature() {
         return this.feature;
     }
@@ -82,15 +80,6 @@ public class CategoryFeature  implements java.io.Serializable {
         this.category = category;
     }
 
-    
-    @Column(name="ui", length=45)
-    public String getUi() {
-        return this.ui;
-    }
-    
-    public void setUi(String ui) {
-        this.ui = ui;
-    }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="categoryFeature")
     public Set<FeatureValue> getFeatureValues() {

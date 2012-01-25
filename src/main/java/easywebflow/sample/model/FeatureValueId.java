@@ -1,5 +1,5 @@
 package easywebflow.sample.model;
-// Generated 2012-01-01 22:49:53 by Hibernate Tools 3.4.0.CR1
+// Generated 2012-01-13 09:00:41 by Hibernate Tools 3.4.0.CR1
 
 
 import javax.persistence.Column;
@@ -14,15 +14,15 @@ public class FeatureValueId  implements java.io.Serializable {
 
      private int prodIdProduct;
      private int catfeatIdCategory;
-     private int catfeatIdCategoryFeature;
+     private int catfeatIdFeature;
 
     public FeatureValueId() {
     }
 
-    public FeatureValueId(int prodIdProduct, int catfeatIdCategory, int catfeatIdCategoryFeature) {
+    public FeatureValueId(int prodIdProduct, int catfeatIdCategory, int catfeatIdFeature) {
        this.prodIdProduct = prodIdProduct;
        this.catfeatIdCategory = catfeatIdCategory;
-       this.catfeatIdCategoryFeature = catfeatIdCategoryFeature;
+       this.catfeatIdFeature = catfeatIdFeature;
     }
    
 
@@ -47,13 +47,13 @@ public class FeatureValueId  implements java.io.Serializable {
     }
 
 
-    @Column(name="CATFEAT_idCategoryFeature", nullable=false)
-    public int getCatfeatIdCategoryFeature() {
-        return this.catfeatIdCategoryFeature;
+    @Column(name="CATFEAT_idFeature", nullable=false)
+    public int getCatfeatIdFeature() {
+        return this.catfeatIdFeature;
     }
     
-    public void setCatfeatIdCategoryFeature(int catfeatIdCategoryFeature) {
-        this.catfeatIdCategoryFeature = catfeatIdCategoryFeature;
+    public void setCatfeatIdFeature(int catfeatIdFeature) {
+        this.catfeatIdFeature = catfeatIdFeature;
     }
 
 
@@ -65,7 +65,7 @@ public class FeatureValueId  implements java.io.Serializable {
          
 		 return (this.getProdIdProduct()==castOther.getProdIdProduct())
  && (this.getCatfeatIdCategory()==castOther.getCatfeatIdCategory())
- && (this.getCatfeatIdCategoryFeature()==castOther.getCatfeatIdCategoryFeature());
+ && (this.getCatfeatIdFeature()==castOther.getCatfeatIdFeature());
    }
    
    public int hashCode() {
@@ -73,7 +73,7 @@ public class FeatureValueId  implements java.io.Serializable {
          
          result = 37 * result + this.getProdIdProduct();
          result = 37 * result + this.getCatfeatIdCategory();
-         result = 37 * result + this.getCatfeatIdCategoryFeature();
+         result = 37 * result + this.getCatfeatIdFeature();
          return result;
    }   
 

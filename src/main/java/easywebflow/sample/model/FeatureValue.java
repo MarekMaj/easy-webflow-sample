@@ -1,5 +1,5 @@
 package easywebflow.sample.model;
-// Generated 2012-01-01 22:49:53 by Hibernate Tools 3.4.0.CR1
+// Generated 2012-01-13 09:00:41 by Hibernate Tools 3.4.0.CR1
 
 
 import javax.persistence.AttributeOverride;
@@ -24,17 +24,17 @@ public class FeatureValue  implements java.io.Serializable {
 
 
      private FeatureValueId id;
-     private CategoryFeature categoryFeature;
      private Product product;
+     private CategoryFeature categoryFeature;
      private String value;
 
     public FeatureValue() {
     }
 
-    public FeatureValue(FeatureValueId id, CategoryFeature categoryFeature, Product product, String value) {
+    public FeatureValue(FeatureValueId id, Product product, CategoryFeature categoryFeature, String value) {
        this.id = id;
-       this.categoryFeature = categoryFeature;
        this.product = product;
+       this.categoryFeature = categoryFeature;
        this.value = value;
     }
    
@@ -44,25 +44,13 @@ public class FeatureValue  implements java.io.Serializable {
     @AttributeOverrides( {
         @AttributeOverride(name="prodIdProduct", column=@Column(name="PROD_idPRODUCT", nullable=false) ), 
         @AttributeOverride(name="catfeatIdCategory", column=@Column(name="CATFEAT_idCategory", nullable=false) ), 
-        @AttributeOverride(name="catfeatIdCategoryFeature", column=@Column(name="CATFEAT_idCategoryFeature", nullable=false) ) } )
+        @AttributeOverride(name="catfeatIdFeature", column=@Column(name="CATFEAT_idFeature", nullable=false) ) } )
     public FeatureValueId getId() {
         return this.id;
     }
     
     public void setId(FeatureValueId id) {
         this.id = id;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumns( { 
-        @JoinColumn(name="CATFEAT_idCategory", referencedColumnName="CAT_idCategory", nullable=false, insertable=false, updatable=false), 
-        @JoinColumn(name="CATFEAT_idCategoryFeature", referencedColumnName="FEAT_idCategoryFeature", nullable=false, insertable=false, updatable=false) } )
-    public CategoryFeature getCategoryFeature() {
-        return this.categoryFeature;
-    }
-    
-    public void setCategoryFeature(CategoryFeature categoryFeature) {
-        this.categoryFeature = categoryFeature;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
@@ -73,6 +61,18 @@ public class FeatureValue  implements java.io.Serializable {
     
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumns( { 
+        @JoinColumn(name="CATFEAT_idCategory", referencedColumnName="CAT_idCategory", nullable=false, insertable=false, updatable=false), 
+        @JoinColumn(name="CATFEAT_idFeature", referencedColumnName="FEAT_idFeature", nullable=false, insertable=false, updatable=false) } )
+    public CategoryFeature getCategoryFeature() {
+        return this.categoryFeature;
+    }
+    
+    public void setCategoryFeature(CategoryFeature categoryFeature) {
+        this.categoryFeature = categoryFeature;
     }
 
     

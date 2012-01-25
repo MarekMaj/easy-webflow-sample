@@ -1,9 +1,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:a4j="http://richfaces.org/a4j"
-      xmlns:rich="http://richfaces.org/rich">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
 
 <ui:composition template="templates/template.xhtml">
 	<ui:define name="body">
@@ -13,20 +13,28 @@
 }
 </style>
 		<fieldset class="example-cnt">
-			<h:form id="LoginForm">
-				<h:outputText value="Wprowadź nazwę użytkownika i hasło: "/>
+			<h:form id="loginForm">
+				<h:outputText value="Wprowadź nazwę użytkownika i hasło: " />
 				<br />
 				<h:outputLabel for="username">Login:</h:outputLabel>
-				<h:inputText id="username" value="#{userManager.credential.username}" required="true" />
-				<h:message for="username" />
+				<h:inputText id="username"
+					value="#{userManager.credential.username}" required="true" />
+				<rich:message for="username" />
 				<br />
 				<h:outputLabel for="password">Hasło:</h:outputLabel>
-				<h:inputSecret id="password" value="#{userManager.credential.password}" required="true" />
-				<h:message for="password" />
+				<h:inputSecret id="password"
+					value="#{userManager.credential.password}" required="true" />
+				<rich:message for="password" />
 				<br />
 				<h:commandButton value="Login" action="#{userManager.login()}" />
 
-				<h:messages globalOnly="true"/>
+				<rich:message for="loginForm" />
+			</h:form>
+			<br />
+			<br />
+			<h:form>
+				<h:commandButton value="Rejestracja" immediate="true"
+					action="#{rejestracja.start}" />
 			</h:form>
 		</fieldset>
 	</ui:define>

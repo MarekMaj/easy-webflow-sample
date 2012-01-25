@@ -1,5 +1,5 @@
 package easywebflow.sample.model;
-// Generated 2012-01-01 22:49:53 by Hibernate Tools 3.4.0.CR1
+// Generated 2012-01-13 09:00:41 by Hibernate Tools 3.4.0.CR1
 
 
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,7 +23,7 @@ import javax.persistence.Table;
 public class Feature  implements java.io.Serializable {
 
 
-     private int idCategoryFeature;
+     private Integer idFeature;
      private String name;
      private Set<CategoryFeature> categoryFeatures = new HashSet<CategoryFeature>(0);
 
@@ -29,26 +31,24 @@ public class Feature  implements java.io.Serializable {
     }
 
 	
-    public Feature(int idCategoryFeature, String name) {
-        this.idCategoryFeature = idCategoryFeature;
+    public Feature(String name) {
         this.name = name;
     }
-    public Feature(int idCategoryFeature, String name, Set<CategoryFeature> categoryFeatures) {
-       this.idCategoryFeature = idCategoryFeature;
+    public Feature(String name, Set<CategoryFeature> categoryFeatures) {
        this.name = name;
        this.categoryFeatures = categoryFeatures;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="idCategoryFeature", unique=true, nullable=false)
-    public int getIdCategoryFeature() {
-        return this.idCategoryFeature;
+    @Column(name="idFeature", unique=true, nullable=false)
+    public Integer getIdFeature() {
+        return this.idFeature;
     }
     
-    public void setIdCategoryFeature(int idCategoryFeature) {
-        this.idCategoryFeature = idCategoryFeature;
+    public void setIdFeature(Integer idFeature) {
+        this.idFeature = idFeature;
     }
 
     

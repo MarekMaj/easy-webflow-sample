@@ -3,6 +3,7 @@
 	<security>true</security>
 	<navigation>true</navigation> 
 	<flows>
-		<flow name="newUser" location="/flow.scxml"/>
+		<flow name="rejestracja" location="/rejestracja.scxml"/>
+		<flow name="noweZamowienie" location="/noweZamowienie.scxml"/>
 	</flows>
 </config> 

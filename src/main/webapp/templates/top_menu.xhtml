@@ -7,35 +7,53 @@
 	xmlns:rich="http://richfaces.org/rich">
 
 <ui:composition>
-
-	<h:outputStylesheet>
-.pic {
-    margin-bottom: -4px;
-    margin-right: 2px;
-}
- 
-.search .rf-ddm-itm-sel {
-    background-color: transparent;
-    background-image:none;
-    border-color: transparent;
-    cursor: default;
-}
-	</h:outputStylesheet>
-
 	<h:form>
 		<rich:toolbar height="26px">
-			<rich:dropDownMenu mode="ajax">
-				<f:facet name="label">
-					<h:outputText value="Informacje" />
-				</f:facet>
-				<rich:menuItem label="Zamówienie" onclick="document.location.href='#{facesContext.externalContext.requestContextPath}/content/zamowienie.jsf'"
-					icon="/images/zam.gif"/>
-				<rich:menuItem label="Kontakt" onclick="document.location.href='#{facesContext.externalContext.requestContextPath}/content/kontakt.jsf'"
-					icon="/images/kon.gif" />
-				<rich:menuItem label="Dostawa" onclick="document.location.href='#{facesContext.externalContext.requestContextPath}/content/dostawa.jsf'" 
-					icon="/images/dos.gif"/>
-				<rich:menuSeparator id="menuSeparator11" />
-			</rich:dropDownMenu>
+			<rich:toolbarGroup location="left">
+				<rich:dropDownMenu mode="ajax">
+					<f:facet name="label">
+						<h:outputText value="Informacje" />
+					</f:facet>
+
+					<rich:menuItem label="Zamówienie"
+						onclick="document.location.href='#{facesContext.externalContext.requestContextPath}/content/zamowienie.jsf'"
+						icon="/images/zam.gif" />
+					<rich:menuItem label="Kontakt"
+						onclick="document.location.href='#{facesContext.externalContext.requestContextPath}/content/kontakt.jsf'"
+						icon="/images/kon.gif" />
+					<rich:menuItem label="Dostawa"
+						onclick="document.location.href='#{facesContext.externalContext.requestContextPath}/content/dostawa.jsf'"
+						icon="/images/dos.gif" />
+					<rich:menuSeparator id="menuSeparator11" />
+
+				</rich:dropDownMenu>
+			</rich:toolbarGroup>
+			<rich:toolbarGroup location="right">
+
+				<h:form rendered="#{userManager.user == null}">
+					<h:commandLink value="Login" style="color:white"
+						onclick="document.location.href='#{facesContext.externalContext.requestContextPath}/login.jsf'" />
+				</h:form>
+				<h:form rendered="#{userManager.user != null}">
+					<a4j:commandLink value="Logout" style="color:white"
+						action="#{userManager.logout()}" />
+				</h:form>
+				<h:panelGroup id="koszykInfo">
+					<h:outputText style="color:grey" value="Twój koszyk jest pusty"
+						rendered="#{shoppingCart.orderItems.isEmpty()}" />
+					<h:outputText style="color:orange"
+						value="Masz produkty w swoim koszyku"
+						rendered="#{!shoppingCart.orderItems.isEmpty()}" />
+				</h:panelGroup>
+
+				<h:form>
+					<a4j:commandButton image="/images/kosz.gif"
+						onclick="document.location.href='#{facesContext.externalContext.requestContextPath}/content/koszyk.jsf'" />
+					<rich:tooltip>
+						<h:outputText value="Koszyk" />
+					</rich:tooltip>
+				</h:form>
+			</rich:toolbarGroup>
 		</rich:toolbar>
 	</h:form>
 </ui:composition>

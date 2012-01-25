@@ -1,0 +1,60 @@
+<scxml initial="sposobDostawy" name="noweZamowienie"><!--   node-size-and-position x=0.0 y=0.0 w=780.0 h=700.0  -->
+ <datamodel>
+  <secured>
+   <roleName>USER</roleName>
+  </secured>
+  <data>order</data>
+ </datamodel>
+ <state id="sposobDostawy"><!--   node-size-and-position x=250.0 y=30.0 w=100.0 h=70.0  -->
+  <datamodel>
+    <viewId>/flows/noweZamowienie/sposobDostawy</viewId>
+  </datamodel>
+  <onexit>
+   <invoke bean="orderPresenter" method="getShipmentType" result="ship"></invoke>
+   <invoke bean="order" method="setShipmentType"><param bean="ship"/></invoke>
+   <invoke bean="ship" method="getName" result="shipment"></invoke>
+  </onexit>
+  <transition cond="shipment==ODBIOR OSOBISTY" event="zatwierdzDostawe" target="sposobPlatnosci"></transition>
+  <transition cond="shipment==POCZTA" event="zatwierdzDostawe" target="daneDoWysylki"></transition>
+  <transition cond="shipment==KURIER" event="zatwierdzDostawe" target="daneDoWysylki"></transition>
+ </state>
+ <state id="daneDoWysylki"><!--   node-size-and-position x=460.0 y=140.0 w=100.0 h=70.0  -->
+  <transition event="zatwierdzDostawe" target="sposobPlatnosci"></transition>
+ </state>
+ <state id="sposobPlatnosci"><!--   node-size-and-position x=260.0 y=190.0 w=100.0 h=70.0  -->
+  <onexit>
+   <invoke bean="orderPresenter" method="getPaymentType" result="pay"></invoke>
+   <invoke bean="order" method="setPaymentType"><param bean="pay"/></invoke>
+   <invoke bean="pay" method="getName" result="payment"></invoke>
+  </onexit>
+  <transition event="doPodsumowania" target="podsumowanieZamowienia"></transition>
+ </state>
+ <state id="modyfikujKoszyk"><!--   node-size-and-position x=70.0 y=210.0 w=100.0 h=100.0  -->
+  <transition event="dalej" target="sposobDostawy"></transition>
+ </state>
+ <final id="zamowienieOdrzucone"><!--   node-size-and-position x=160.0 y=610.0 w=120.0 h=70.0  --></final>
+ <state id="zaplac"><!--   node-size-and-position x=640.0 y=550.0 w=100.0 h=40.0  -->
+  <transition event="dalej" target="zakoncz"></transition>
+ </state>
+ <state id="zamowieniePrzyjete"><!--   node-size-and-position x=460.0 y=470.0 w=120.0 h=60.0  -->
+  <onentry>
+   <invoke bean="shoppingCart" method="cleanShoppingCart"/>
+  </onentry>
+  <transition cond="payment==GOTOWKA" event="dalej" target="zakoncz"></transition>
+  <transition cond="payment==PRZELEW" event="dalej" target="zaplac"></transition>
+ </state>
+ <final id="zakoncz"><!--   node-size-and-position x=480.0 y=610.0 w=100.0 h=60.0  --></final>
+ <state id="zatwierdzZamowienie"><!--   node-size-and-position x=240.0 y=470.0 w=140.0 h=50.0  -->
+  <onentry>
+   <invoke bean="orderService" method="confirmOrder" result="confirmed">
+    <param bean="order"></param>
+   </invoke>
+  </onentry>
+  <transition cond="confirmed==true" event="zatwierdz" target="zamowieniePrzyjete"></transition>
+  <transition cond="confirmed==false" event="zatwierdz" target="zamowienieOdrzucone"></transition>
+ </state>
+ <state id="podsumowanieZamowienia"><!--   node-size-and-position x=240.0 y=350.0 w=140.0 h=70.0  -->
+  <transition event="modyfikuj" target="modyfikujKoszyk"></transition>
+  <transition event="zatwierdz" target="zatwierdzZamowienie"></transition>
+ </state>
+</scxml>

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="body">
+		<fieldset class="example-cnt">
+			<h:panelGroup>
+				<h:form>
+					<h:panelGrid columns="1">
+						<h:outputLabel>Podsumowanie zamówienia: </h:outputLabel>
+						<br />
+						<rich:dataTable value="#{shoppingCart.orderItems}" var="item"
+							id="table" rowClasses="odd-row, even-row" styleClass="stable">
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Nazwa produktu" />
+								</f:facet>
+								<h:outputText value="#{item.product.name}" />
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Cena produktu" />
+								</f:facet>
+								<h:outputText value="#{item.price}" />
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Ilość" />
+								</f:facet>
+								<h:outputText value="#{item.quantity}" />
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Wartość" />
+								</f:facet>
+								<h:outputText value="#{item.price*item.quantity}" />
+							</rich:column>
+
+						</rich:dataTable>
+
+						<h:panelGrid columns="2">
+
+							<h:outputLabel>Nazwa odbiorcy: </h:outputLabel>
+							<h:outputText value="#{noweZamowienie.map.order.receiverName}" />
+
+							<h:outputLabel>Druga nazwa odbiorcy: </h:outputLabel>
+							<h:outputText value="#{noweZamowienie.map.order.receiverName2}" />
+
+							<h:outputLabel>Adres odbiorcy: </h:outputLabel>
+							<h:outputText value="#{noweZamowienie.map.order.receiverAddress}" />
+
+							<h:outputLabel>Sposób dostawy: </h:outputLabel>
+							<h:outputText
+								value="#{noweZamowienie.map.order.shipmentType.name}" />
+
+							<h:outputLabel>Sposób płatności: </h:outputLabel>
+							<h:outputText
+								value="#{noweZamowienie.map.order.paymentType.name}" />
+
+							<h:outputText value="Całkowita wartość zamówienia: " />
+							<h:outputText
+								value="#{shoppingCart.getTotalValue() + noweZamowienie.map.order.shipmentType.price}" />
+
+						</h:panelGrid>
+						<h:panelGrid columns="2">
+							<h:commandButton value="Modyfikuj"
+								action="#{noweZamowienie.transitionTo('modyfikuj')}" />
+
+							<h:commandButton value="Zatwierdź"
+								action="#{noweZamowienie.transitionTo('zatwierdz')}" />
+						</h:panelGrid>
+					</h:panelGrid>
+				</h:form>
+			</h:panelGroup>
+		</fieldset>
+	</ui:define>
+</ui:composition>
+</html>

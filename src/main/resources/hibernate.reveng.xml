@@ -2,7 +2,8 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-	<table-filter match-name="CATEGORIES"></table-filter>
+
+<table-filter match-name="CATEGORIES"></table-filter>
 	<table-filter match-name="CATEGORY_FEATURES"></table-filter>
 	<table-filter match-name="FEATURES"></table-filter>
 	<table-filter match-name="FEATURE_VALUES"></table-filter>
@@ -10,6 +11,8 @@
 	<table-filter match-name="ORDER_ITEMS"></table-filter>
 	<table-filter match-name="PRODUCTS"></table-filter>
 	<table-filter match-name="USERS"></table-filter>
+	<table-filter match-name="SHIPMENT_TYPES"></table-filter>
+	<table-filter match-name="PAYMENT_TYPES"></table-filter>
 	<table catalog="INZ_SKLEP" name="CATEGORIES"
 		class="easywebflow.sample.model.Category">
 	</table>
@@ -25,11 +28,19 @@
 	<table catalog="INZ_SKLEP" name="FEATURE_VALUES"
 		class="easywebflow.sample.model.FeatureValue">
 	</table>
-	<table catalog="INZ_SKLEP" name="ORDERS" class="easywebflow.sample.model.Order">
+	<table catalog="INZ_SKLEP" name="ORDERS"
+		class="easywebflow.sample.model.Order">
 	</table>
 	<table catalog="INZ_SKLEP" name="ORDER_ITEMS"
 		class="easywebflow.sample.model.OrderItem">
 	</table>
-	<table catalog="INZ_SKLEP" name="USERS" class="easywebflow.sample.model.User">
+	<table catalog="INZ_SKLEP" name="USERS"
+		class="easywebflow.sample.model.User">
+	</table>
+		<table catalog="INZ_SKLEP" name="SHIPMENT_TYPES"
+		class="easywebflow.sample.model.ShipmentType">
+	</table>
+		<table catalog="INZ_SKLEP" name="PAYMENT_TYPES"
+		class="easywebflow.sample.model.PaymentType">
 	</table>
 </hibernate-reverse-engineering>

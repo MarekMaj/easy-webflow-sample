@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="body">
+		<h:outputStylesheet>
+.even-row {
+    background-color: #FCFFFE;
+}
+ 
+.odd-row {
+    background-color: #ECF3FE;
+}
+ 
+.active-row {
+    background-color: #FFEBDA !important;
+    cursor: pointer;
+    
+    
+}
+.space {
+	margin-left: 30px;
+}
+</h:outputStylesheet>
+		<fieldset class="example-cnt">
+			<h:panelGroup>
+				<h:outputText value="#{navigator.product.name}" />
+				<h:panelGrid columns="2" columnClasses="top,top">
+					<h:form id="productForm">
+						<rich:dataTable value="#{navigator.product.featureValuesList}"
+							var="feat" id="table" rowClasses="odd-row, even-row"
+							styleClass="stable">
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Nazwa cechy" />
+								</f:facet>
+								<h:outputText value="#{feat.categoryFeature.feature.name}" />
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Wartość" />
+								</f:facet>
+								<h:outputText value="#{feat.value}" />
+							</rich:column>
+						</rich:dataTable>
+
+
+						<rich:jQuery selector=".stable tr:odd" query="addClass('odd-row')" />
+						<rich:jQuery selector=".stable tr:even"
+							query="addClass('even-row')" />
+						<rich:jQuery selector=".stable tr" event="mouseover"
+							query="jQuery(this).addClass('active-row')" />
+						<rich:jQuery selector=".stable tr" event="mouseout"
+							query="jQuery(this).removeClass('active-row')" />
+					</h:form>
+					<h:form styleClass="space">Obrazek</h:form>
+				</h:panelGrid>
+				<br />
+				<h:outputText value="Cena: " />
+				<h:outputText value="#{navigator.product.price}" />
+				<br />
+				<br />
+				<h:panelGroup>
+					<h:panelGrid columns="3" id="productPanel">
+						<h:outputText value="Ile sztuk: " />
+
+						<h:form id="dodajDoKoszyka">
+							<h:panelGrid columns="2">
+								<rich:inputNumberSpinner minValue="1"
+									value="#{navigator.quantity}" />
+								<a4j:commandButton value="Dodaj do koszyka"
+									action="#{shoppingCart.add(navigator.product,navigator.quantity )}"
+									render="koszykInfo, navigator, productPanel" />
+							</h:panelGrid>
+						</h:form>
+
+						<rich:message for="dodajDoKoszyka" />
+
+					</h:panelGrid>
+				</h:panelGroup>
+			</h:panelGroup>
+		</fieldset>
+	</ui:define>
+</ui:composition>
+
+</html>

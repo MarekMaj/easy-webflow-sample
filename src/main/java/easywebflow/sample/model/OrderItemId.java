@@ -1,5 +1,5 @@
 package easywebflow.sample.model;
-// Generated 2012-01-01 22:49:53 by Hibernate Tools 3.4.0.CR1
+// Generated 2012-01-13 09:00:41 by Hibernate Tools 3.4.0.CR1
 
 
 import javax.persistence.Column;

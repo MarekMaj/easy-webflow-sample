@@ -25,7 +25,8 @@ dependencies {
 	compile 'org.easy-webflow:framework:0.9.0-SNAPSHOT', 'javax.enterprise:cdi-api:1.0-SP4', 
 	'org.richfaces.ui:richfaces-components-ui:4.1.0.Final', 'org.richfaces.core:richfaces-core-impl:4.1.0.Final',
 	'org.hibernate:hibernate-core:3.6.8.Final', 'org.hibernate:hibernate-validator:4.2.0.Final',
-	'mysql:mysql-connector-java:5.1.18'
+	'mysql:mysql-connector-java:5.1.18',
+	'org.glassfish:javax.ejb:3.1.1'
 	runtime 'com.sun.faces:jsf-api:2.1.3' 
 }
 

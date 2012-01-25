@@ -5,5 +5,8 @@
 
 	<persistence-unit name="sample">
 		<jta-data-source>INZ_SKLEP</jta-data-source>
+		<properties>
+			<property name="eclipselink.logging.level" value="ALL" />
+		</properties>
 	</persistence-unit>
 </persistence>
