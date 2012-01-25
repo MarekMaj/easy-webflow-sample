@@ -15,13 +15,14 @@
 					<h:panelGrid columns="1">
 						<h:outputLabel>Wybierz sposób płatności </h:outputLabel>
 
-						<h:selectOneRadio layout="pageDirection"
-							value="#{orderPresenter.payType}">
+						<h:selectOneRadio id="choice" layout="pageDirection"
+							value="#{orderPresenter.payType}" required="true">
 						
 							<f:selectItems var="pay" itemLabel="#{pay.name}"
 								value="#{orderPresenter.getPayments()}" itemValue="#{pay.idPayment}"/>
 						</h:selectOneRadio>
-
+						<rich:message for="choice" />
+						
 						<h:commandButton value="Zatwierdź"
 							action="#{noweZamowienie.transitionTo('doPodsumowania')}" />
 

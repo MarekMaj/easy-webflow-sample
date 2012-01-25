@@ -25,12 +25,10 @@ public class OrderPresenter {
 	}
 	
 	public ShipmentType getShipmentType() { 
-		System.out.println("biore shipment type " + shipType);
 		return em.find(ShipmentType.class, shipType); 
 	}
 	
 	public PaymentType getPaymentType(){
-		System.out.println("biore payment type " + payType);
 		return em.find(PaymentType.class, payType);
 	}
 	
@@ -39,7 +37,6 @@ public class OrderPresenter {
 	}
 	
 	public void setShipType(int type) {
-		System.out.println("ustawiam type " + type);
 		this.shipType = type;
 	}
 	

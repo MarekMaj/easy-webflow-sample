@@ -15,14 +15,16 @@
 					<h:panelGrid columns="1">
 						<h:outputLabel>Wybierz sposób dostawy: </h:outputLabel>
 
-						<h:selectOneRadio layout="pageDirection"
-							value="#{orderPresenter.shipType}">
+						<h:selectOneRadio id="choice" layout="pageDirection"
+							value="#{orderPresenter.shipType}" required="true">
 
 							<f:selectItems var="ship" itemLabel="#{ship.name} #{ship.price}"
 								value="#{orderPresenter.getShipments()}"
 								itemValue="#{ship.idShipment}" />
 						
 						</h:selectOneRadio>
+						<rich:message for="choice" />
+						
 						<h:commandButton value="Zatwierdź"
 							action="#{noweZamowienie.transitionTo('zatwierdzDostawe')}" />
 

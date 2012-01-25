@@ -14,7 +14,6 @@ public class Credential implements Serializable{
 	
 	public Credential() {
 		super();
-		System.out.println("Konstruktor credential");
 	}
 	
 	public String getPassword() {

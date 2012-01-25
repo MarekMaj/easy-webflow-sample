@@ -19,7 +19,10 @@
  <final id="odrzucony"><!--   node-size-and-position x=350.0 y=460.0 w=100.0 h=90.0  --></final>
  <state id="regulamin"><!--   node-size-and-position x=280.0 y=300.0 w=100.0 h=70.0  -->
   <onexit>
-   <invoke bean="userService" method="registerNewUser" result="userCreated">
+   <invoke bean="userService" method="registerNewUser">
+    <param bean="user"/>
+    </invoke>
+    <invoke bean="userService" method="addUserRole" result="userCreated">
     <param bean="user"/>
    </invoke>
   </onexit>

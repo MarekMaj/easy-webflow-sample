@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 
 import easywebflow.sample.model.Order;
 import easywebflow.sample.model.OrderItem;
+import easywebflow.sample.model.OrderItemId;
 import easywebflow.sample.session.ShoppingCart;
 import easywebflow.sample.session.UserManager;
 
@@ -35,12 +36,11 @@ public class OrderManager {
 		
 		order.setUser(userManager.getUser()); 
 		em.persist(order);
-		System.out.println("Id "+order.getIdOrder());
 	}
 
 	public void completeOrderItems(Order order) {
 		for (OrderItem i: basket.getOrderItems()){
-			i.setOrder(order);
+			i.setId(new OrderItemId(order.getIdOrder(), i.getProduct().getIdProduct()));
 			em.persist(i);
 		}
 		

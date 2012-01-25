@@ -46,7 +46,10 @@
  <final id="zakoncz"><!--   node-size-and-position x=480.0 y=610.0 w=100.0 h=60.0  --></final>
  <state id="zatwierdzZamowienie"><!--   node-size-and-position x=240.0 y=470.0 w=140.0 h=50.0  -->
   <onentry>
-   <invoke bean="orderService" method="confirmOrder" result="confirmed">
+   <invoke bean="orderService" method="completeOrder">
+    <param bean="order"></param>
+   </invoke>
+    <invoke bean="orderService" method="completeOrderItems" result="confirmed">
     <param bean="order"></param>
    </invoke>
   </onentry>

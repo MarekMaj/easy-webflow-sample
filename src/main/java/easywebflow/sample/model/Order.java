@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -161,7 +163,7 @@ public class Order  implements java.io.Serializable {
         this.receiverName2 = receiverName2;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="order")
+@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY, mappedBy="order")
     public Set<OrderItem> getOrderItems() {
         return this.orderItems;
     }

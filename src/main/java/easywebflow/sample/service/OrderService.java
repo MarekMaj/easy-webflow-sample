@@ -27,23 +27,16 @@ public class OrderService {
 
 	@RolesAllowed("USER")
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-	public boolean confirmOrder(Order order){
-		this.completeOrder(order);
-		this.completeOrderItems(order);
+	public boolean completeOrderItems(Order order) {
+		orderManager.completeOrderItems(order);
 		return true;
 	}
 
 	@RolesAllowed("USER")
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-	public void completeOrderItems(Order order) {
-		orderManager.completeOrderItems(order);
-		
-	}
-
-	@RolesAllowed("USER")
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-	public void completeOrder(Order order){
+	public boolean completeOrder(Order order){
 		orderManager.completeOrder(order);
+		return true;
 	}
 
 }

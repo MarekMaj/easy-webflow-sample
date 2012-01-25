@@ -27,7 +27,7 @@ public class UserManager implements Serializable{
 	public UserManager() {
 		super();
 	}
-
+	
 	public void login() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
@@ -37,7 +37,6 @@ public class UserManager implements Serializable{
 			this.user = em.createNamedQuery(User.FIND_BY_LOGIN, User.class).
 					setParameter("login", this.credential.getUsername()).getSingleResult();
 
-			System.out.println("User principal " +request.getUserPrincipal());
 			context.addMessage("loginForm", new FacesMessage("Zostałeś zalogowany " + this.user.getName()));
 			// TODO porownanie hashy passwordow
 		} catch (ServletException e) {

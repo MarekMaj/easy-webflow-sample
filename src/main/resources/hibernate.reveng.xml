@@ -3,7 +3,7 @@
 
 <hibernate-reverse-engineering>
 
-<table-filter match-name="CATEGORIES"></table-filter>
+	<table-filter match-name="CATEGORIES"></table-filter>
 	<table-filter match-name="CATEGORY_FEATURES"></table-filter>
 	<table-filter match-name="FEATURES"></table-filter>
 	<table-filter match-name="FEATURE_VALUES"></table-filter>
@@ -13,6 +13,7 @@
 	<table-filter match-name="USERS"></table-filter>
 	<table-filter match-name="SHIPMENT_TYPES"></table-filter>
 	<table-filter match-name="PAYMENT_TYPES"></table-filter>
+	<table-filter match-name="USER_GROUPS"></table-filter>
 	<table catalog="INZ_SKLEP" name="CATEGORIES"
 		class="easywebflow.sample.model.Category">
 	</table>
@@ -37,10 +38,13 @@
 	<table catalog="INZ_SKLEP" name="USERS"
 		class="easywebflow.sample.model.User">
 	</table>
-		<table catalog="INZ_SKLEP" name="SHIPMENT_TYPES"
+	<table catalog="INZ_SKLEP" name="SHIPMENT_TYPES"
 		class="easywebflow.sample.model.ShipmentType">
 	</table>
-		<table catalog="INZ_SKLEP" name="PAYMENT_TYPES"
+	<table catalog="INZ_SKLEP" name="PAYMENT_TYPES"
 		class="easywebflow.sample.model.PaymentType">
+	</table>
+	<table catalog="INZ_SKLEP" name="USER_GROUPS"
+		class="easywebflow.sample.model.UserGroup">
 	</table>
 </hibernate-reverse-engineering>

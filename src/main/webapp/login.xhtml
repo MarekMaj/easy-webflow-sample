@@ -13,7 +13,8 @@
 }
 </style>
 		<fieldset class="example-cnt">
-			<h:form id="loginForm">
+			<h:outputText style="color:green" value="Jesteś zalogowany #{userManager.user.name}." rendered="#{userManager.user != null}" />
+			<h:form id="loginForm" rendered="#{userManager.user.login == null}">
 				<h:outputText value="Wprowadź nazwę użytkownika i hasło: " />
 				<br />
 				<h:outputLabel for="username">Login:</h:outputLabel>
@@ -32,7 +33,7 @@
 			</h:form>
 			<br />
 			<br />
-			<h:form>
+			<h:form rendered="#{userManager.user.login == null}">
 				<h:commandButton value="Rejestracja" immediate="true"
 					action="#{rejestracja.start}" />
 			</h:form>

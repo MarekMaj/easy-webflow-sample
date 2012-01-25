@@ -65,7 +65,7 @@
 
 							<h:outputText value="Całkowita wartość zamówienia: " />
 							<h:outputText
-								value="#{shoppingCart.getTotalValue() + noweZamowienie.map.order.shipmentType.price}" />
+								value="#{shoppingCart.getTotalValue() + noweZamowienie.map.order.shipmentType.price.doubleValue()}" />
 
 						</h:panelGrid>
 						<h:panelGrid columns="2">

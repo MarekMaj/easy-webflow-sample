@@ -9,6 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import easywebflow.sample.model.User;
+import easywebflow.sample.model.UserGroup;
+import easywebflow.sample.model.UserGroupId;
 
 @Named
 @Stateless
@@ -28,6 +30,12 @@ public class UserService {
 		return true;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	public boolean addUserRole(User user){
+		em.persist(new UserGroup(new UserGroupId(user.getIdUser(), 2) , user)); // 2 role for USER
+		return true;
+	}
+	
 	public boolean uniqueLogin(User user){
 		return (em.createNamedQuery(User.FIND_BY_LOGIN, User.class).
 				setParameter("login", user.getLogin()).getResultList().size() != 0) 
